@@ -1,11 +1,16 @@
 const sender = require('nodemailer')
 require('dotenv').config()
 const d = new Date;
+const express = require('express');
+const app = express()
 
-async function main() {
+app.use(express.json())
+app.get('/', (req, res)=>res.json('Funcionando'))
+
+async function main(name) {
     let activies = ["Tomar banho", "Codar", "Comer", "Go Gym", "Dormir"]
     let hours = `${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}`
-    let name = "SEU NOME"
+    let name = name || "SEU NOME"
     let periodo = d.getHours() <= 12 ? "manhã" : d.getHours() < 18 ? "tarde" : "noite";
 
     let informations = sender.createTransport({
@@ -135,7 +140,16 @@ async function main() {
     })
 }
 
-setInterval(()=>{
-    console.log("ENVIADO")
-    main().then(() => console.log('deu bom')).catch((err) => console.log(err))
-}, 8 * 60 * 60 * 1000)
+
+app.get('/send/:name', (req, res)=>{
+    res.json('Enviada')
+    main(req.params.name).then(() => console.log('deu bom')).catch((err) => console.log(err))
+})
+
+app.listen(8080, (req, res)=>console.log("rodando"))
+
+
+// setInterval(()=>{
+//     console.log("ENVIADO")
+//     main().then(() => console.log('deu bom')).catch((err) => console.log(err))
+// }, 8 * 60 * 60 * 1000)
