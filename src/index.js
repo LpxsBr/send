@@ -7,10 +7,10 @@ const app = express()
 app.use(express.json())
 app.get('/', (req, res)=>res.json('Funcionando'))
 
-async function main(name) {
+async function main(username) {
     let activies = ["Tomar banho", "Codar", "Comer", "Go Gym", "Dormir"]
     let hours = `${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}`
-    let name = name || "SEU NOME"
+    let name = username || "SEU NOME"
     let periodo = d.getHours() <= 12 ? "manhã" : d.getHours() < 18 ? "tarde" : "noite";
 
     let informations = sender.createTransport({
