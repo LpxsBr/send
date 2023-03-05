@@ -7,7 +7,7 @@ async function main() {
     let hours = `${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}`
     let name = "SEU NOME"
     let periodo = d.getHours() <= 12 ? "manhã" : d.getHours() < 18 ? "tarde" : "noite";
-    
+
     let informations = sender.createTransport({
         host: 'smtp.sendgrid.net',
         port: 587,
@@ -17,17 +17,109 @@ async function main() {
         },
     })
 
-    let html = `
-    <h1>Olá Sr ${name} </h1>
-    <p>São exatemente ${hours} da ${periodo}</p>
-    <h3>Suas atividade pra hoje são</h3>
-    <li>${activies[0]}</li>
-    <li>${activies[1]}</li>
-    <li>${activies[2]}</li>
-    <li>${activies[3]}</li>
-    <li>${activies[4]}</li>
-    <h3>Tenha um ótimo dia</h3>
-    `
+    let weekDay = ['domingo','segunda', 'terça', 'quarta', 'quinta', 'sexta', 'sábado']
+    let html
+    switch (d.getDay()) {
+        case 0 || 6:
+            html = `
+            <h1>Olá Sr ${name} </h1>
+            <h2>Hoje é ${weekDay[d.getDay()]}</h2>
+            <p>São exatemente ${hours} da ${periodo}</p>
+            <h3>Bom final de semana hehe </h3>
+            <h4>Tenha um ótimo dia</h4>
+            `
+            break;
+        case 1:
+            html =
+                `
+                <h1>Olá Sr ${name} </h1>
+                <h2>Hoje é ${weekDay[d.getDay()]}</h2>
+                <p>São exatemente ${hours} da ${periodo}</p>
+                <h3>Suas atividade pra hoje são</h3>
+                ${
+                    activies.map((activitie)=>{
+                        return(`<li>${activitie}</li>`)
+                    })
+                }
+                <h3>Tenha um ótimo dia</h3>
+                `
+            break;
+        case 2:
+            html =
+                `
+                <h1>Olá Sr ${name} </h1>
+                <h2>Hoje é ${weekDay[d.getDay()]}</h2>
+                <p>São exatemente ${hours} da ${periodo}</p>
+                <h3>Suas atividade pra hoje são</h3>
+                ${
+                    activies.map((activitie)=>{
+                        return(`<li>${activitie}</li>`)
+                    })
+                }
+                <h3>Tenha um ótimo dia</h3>
+                `
+            break;
+        case 3:
+            html =
+                `
+                <h1>Olá Sr ${name} </h1>
+                <h2>Hoje é ${weekDay[d.getDay()]}</h2>
+                <p>São exatemente ${hours} da ${periodo}</p>
+                <h3>Suas atividade pra hoje são</h3>
+                ${
+                    activies.map((activitie)=>{
+                        return(`<li>${activitie}</li>`)
+                    })
+                }
+                <h3>Tenha um ótimo dia</h3>
+                `
+            break;
+        case 4:
+            html =
+                `
+                <h1>Olá Sr ${name} </h1>
+                <h2>Hoje é ${weekDay[d.getDay()]}</h2>
+                <p>São exatemente ${hours} da ${periodo}</p>
+                <h3>Suas atividade pra hoje são</h3>
+                ${
+                    activies.map((activitie)=>{
+                        return(`<li>${activitie}</li>`)
+                    })
+                }
+                <h3>Tenha um ótimo dia</h3>
+                `
+            break;
+        case 6:
+            html =
+                `
+                <h1>Olá Sr ${name} </h1>
+                <h2>Hoje é ${weekDay[d.getDay()]}</h2>
+                <p>São exatemente ${hours} da ${periodo}</p>
+                <h3>Suas atividade pra hoje são</h3>
+                ${
+                    activies.map((activitie)=>{
+                        return(`<li>${activitie}</li>`)
+                    })
+                }
+                <h3>Tenha um ótimo dia</h3>
+                `
+            break;
+        default:
+            break;
+    }
+
+
+    // `
+    // <h1>Olá Sr ${name} </h1>
+    // <p>São exatemente ${hours} da ${periodo}</p>
+    // <h3>Suas atividade pra hoje são</h3>
+    // ${
+    //     activies.map((activitie)=>{
+    //         return(`<li>${activitie}</li>`)
+    //     })
+    // }
+    // <h3>Tenha um ótimo dia</h3>
+    // `
     let msgbody = await informations.sendMail({
         from: '"Test Lpxsbr 👻" <lpxsbr.test@gmail.com>', // sender address
         to: "anselmolopes.an@gmail.com", // list of receivers
@@ -43,10 +135,7 @@ async function main() {
     })
 }
 
-main().then(() => console.log('deu bom')).catch((err) => console.log(err))
-
-
-// setInterval(()=>{
-//     console.log("ENVIADO")
-
-// }, 24 * 60 * 60 * 1000)
+setInterval(()=>{
+    console.log("ENVIADO")
+    main().then(() => console.log('deu bom')).catch((err) => console.log(err))
+}, 8 * 60 * 60 * 1000)
