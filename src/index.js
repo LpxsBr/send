@@ -146,10 +146,12 @@ app.get('/send/:name', (req, res)=>{
     main(req.params.name).then(() => console.log('deu bom')).catch((err) => console.log(err))
 })
 
-app.listen(8080, (req, res)=>console.log("rodando"))
+app.listen(8080, (req, res)=>{
+    setInterval(()=>{
+        console.log("ENVIADO")
+        main().then(() => console.log('deu bom')).catch((err) => console.log(err))
+    }, 2 * 60 * 60 * 1000)
+    console.log("rodando")
+})
 
 
-// setInterval(()=>{
-//     console.log("ENVIADO")
-//     main().then(() => console.log('deu bom')).catch((err) => console.log(err))
-// }, 8 * 60 * 60 * 1000)
