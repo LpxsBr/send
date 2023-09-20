@@ -142,8 +142,9 @@ async function main(username) {
 
 
 app.get('/send/:name', (req, res)=>{
+    const {name} = req.params
     res.json('Enviada')
-    main(req.params.name).then(() => console.log('deu bom')).catch((err) => console.log(err))
+    main(name).then(() => console.log('deu bom')).catch((err) => console.log(err))
 })
 
 app.listen(8080, (req, res)=>{
