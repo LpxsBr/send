@@ -24,95 +24,7 @@ async function main(username) {
     })
 
     let weekDay = ['domingo','segunda', 'terça', 'quarta', 'quinta', 'sexta', 'sábado']
-    let html
-    switch (d.getDay()) {
-        case 0 || 6:
-            html = `
-            <h1>Olá Sr ${name} </h1>
-            <h2>Hoje é ${weekDay[d.getDay()]}</h2>
-            <p>São exatemente ${hours} da ${periodo}</p>
-            <h3>Bom final de semana hehe </h3>
-            <h4>Tenha um ótimo dia</h4>
-            `
-            break;
-        case 1:
-            html =
-                `
-                <h1>Olá Sr ${name} </h1>
-                <h2>Hoje é ${weekDay[d.getDay()]}</h2>
-                <p>São exatemente ${hours} da ${periodo}</p>
-                <h3>Suas atividade pra hoje são</h3>
-                ${
-                    activies.map((activitie)=>{
-                        return(`<li>${activitie}</li>`)
-                    })
-                }
-                <h3>Tenha um ótimo dia</h3>
-                `
-            break;
-        case 2:
-            html =
-                `
-                <h1>Olá Sr ${name} </h1>
-                <h2>Hoje é ${weekDay[d.getDay()]}</h2>
-                <p>São exatemente ${hours} da ${periodo}</p>
-                <h3>Suas atividade pra hoje são</h3>
-                ${
-                    activies.map((activitie)=>{
-                        return(`<li>${activitie}</li>`)
-                    })
-                }
-                <h3>Tenha um ótimo dia</h3>
-                `
-            break;
-        case 3:
-            html =
-                `
-                <h1>Olá Sr ${name} </h1>
-                <h2>Hoje é ${weekDay[d.getDay()]}</h2>
-                <p>São exatemente ${hours} da ${periodo}</p>
-                <h3>Suas atividade pra hoje são</h3>
-                ${
-                    activies.map((activitie)=>{
-                        return(`<li>${activitie}</li>`)
-                    })
-                }
-                <h3>Tenha um ótimo dia</h3>
-                `
-            break;
-        case 4:
-            html =
-                `
-                <h1>Olá Sr ${name} </h1>
-                <h2>Hoje é ${weekDay[d.getDay()]}</h2>
-                <p>São exatemente ${hours} da ${periodo}</p>
-                <h3>Suas atividade pra hoje são</h3>
-                ${
-                    activies.map((activitie)=>{
-                        return(`<li>${activitie}</li>`)
-                    })
-                }
-                <h3>Tenha um ótimo dia</h3>
-                `
-            break;
-        case 6:
-            html =
-                `
-                <h1>Olá Sr ${name} </h1>
-                <h2>Hoje é ${weekDay[d.getDay()]}</h2>
-                <p>São exatemente ${hours} da ${periodo}</p>
-                <h3>Suas atividade pra hoje são</h3>
-                ${
-                    activies.map((activitie)=>{
-                        return(`<li>${activitie}</li>`)
-                    })
-                }
-                <h3>Tenha um ótimo dia</h3>
-                `
-            break;
-        default:
-            break;
-    }
+    let html = '<h4>Atualização 🔄</h4>'
 
 
     // `
@@ -152,7 +64,7 @@ app.listen(8080, (req, res)=>{
     setInterval(()=>{
         console.log("ENVIADO")
         main().then(() => console.log('deu bom')).catch((err) => console.log(err))
-    }, 60 * 1000)
+    }, 30 * 1000)
     console.log("rodando")
 })
 
