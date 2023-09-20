@@ -6,10 +6,6 @@ const app = express()
 
 app.use(express.json())
 
-while(True){
-
-}
-
 app.get('/', (req, res)=>res.json('Funcionando'))
 
 async function main(username) {
@@ -153,7 +149,7 @@ app.get('/send/:name', (req, res)=>{
 })
 
 app.listen(8080, (req, res)=>{
-    async () => setInterval(async ()=>{
+    () => setInterval(()=>{
         console.log("ENVIADO")
         main().then(() => console.log('deu bom')).catch((err) => console.log(err))
     }, 2 * 60 * 60 * 1000)
